@@ -1,27 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Route, NavLink, Switch} from 'react-router-dom';
+import s from './style/App.module.css';
 
-function App() {
+import Home from './views/HomeView';
+import Movies from './views/MoviesView';
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+
+const App = () => (
+    <>
+      <ul className={s.menu}>
+        <li className={s.menu__item}><NavLink to="/" className={s.menu__link}>Главная</NavLink></li>  
+        <li className={s.menu__item}><NavLink to="/movies" className={s.menu__link}>Фильмы</NavLink></li>
+      </ul>
+
+    <Switch>
+      <Route path='/' exact component={Home} ></Route>
+      <Route path='/movies' exact component={Movies}></Route>
+
+      <Route component={Home}></Route>
+    </Switch>
+
+    </>
   );
-}
+
 
 export default App;
 
