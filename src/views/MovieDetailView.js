@@ -3,15 +3,16 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import s from '../style/MovieDetailView.module.css';
 import CastView from './CastView';
 import ReviewsView from './ReviewsView';
+import SearchView from "./SearchView";
 
-export default function ({movie}) {
+export default function ({movie, firstQuery}) {
 
-  console.log("movie ", movie.genres);
+    console.log(firstQuery);
 
     return(
       <div>
         <section className={s.general}>
-        <NavLink to='/' className={s.general__back}>Назад</NavLink>
+        <NavLink to={firstQuery && `movie/?query=${firstQuery}`} className={s.general__back}>Назад</NavLink>
           <ul className={s.general__list}>
         <li className={s.genetal__item}>
           <img alt='Плакат фильма' src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} />
