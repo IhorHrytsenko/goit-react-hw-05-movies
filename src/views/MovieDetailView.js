@@ -1,16 +1,13 @@
-import React from "react";
+import React, {Suspense, lazy} from "react";
 import { Route, NavLink, Switch, useHistory } from 'react-router-dom';
 import s from '../style/MovieDetailView.module.css';
-import CastView from './CastView';
-import ReviewsView from './ReviewsView';
+
+const ReviewsView = lazy(() => import('./ReviewsView.js'));
+const CastView = lazy(() => import('./CastView.js'));
 
 export default function ({movie, location}) {
 
-
     const history = useHistory();
-    // const location = useLocation();
-
-    console.log(location);
 
     function goBack(){
       history.push(location.state.from)
@@ -50,16 +47,19 @@ export default function ({movie, location}) {
 
 
         <Switch> 
-
         <Route path="/movies/:movieId/cast">
             <section className={s.general}>
-              <CastView movieId={movie.id}/>  
+            <Suspense>
+              <CastView movieId={movie.id}/>
+            </Suspense>  
             </section>         
         </Route>
 
         <Route path="/movies/:movieId/reviews">
             <section className={s.general}>
+            <Suspense>
               <ReviewsView movieId={movie.id}/>
+            </Suspense>
             </section>            
         </Route>
 

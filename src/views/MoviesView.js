@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, lazy, Suspense} from "react";
 import api from "../components/ApiService";
 import { useParams, useLocation, useHistory } from "react-router-dom";
-import MovieDetailView from './MovieDetailView';
-import SearchView from './SearchView';
 
+const MovieDetailView = lazy(() => import('./MovieDetailView.js'));
+const SearchView = lazy(() => import('./SearchView.js'));
 
 export default function () {
 
+ 
     const {movieid} = useParams();
     const [movie, setMovie] = useState(null);
     const location = useLocation();
@@ -32,12 +33,12 @@ export default function () {
       <>  
 
         { movieid && movie
-        ? <MovieDetailView movie = {movie} 
+        ? <Suspense fallback={<h1>AAAAAaaaaaaa.....</h1>}> <MovieDetailView movie = {movie} 
                     location= {location}
-        />
-        : <SearchView firstQuery = {firstQuery}
+        /> </Suspense>
+        : <Suspense fallback={<h1>AAAAAaaaaaaa.....</h1>}> <SearchView firstQuery = {firstQuery}
                 HistorySearch = {HistorySearch}
-        />
+        /></Suspense>
         }
 
     </>
