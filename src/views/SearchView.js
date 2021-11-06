@@ -55,7 +55,7 @@ export default function ({firstQuery, HistorySearch}){
             <ul>
                 {result && result.results.map(r => 
                         
-                        <li key={r.id}> <NavLink to={`${r.id}`}> {r.title}</NavLink> </li> 
+                        <li key={r.id}> <NavLink to={{pathname: `${r.id}`, state:{from: location},}}> {r.title}</NavLink> </li> 
                     )
                 }
             </ul>
@@ -63,7 +63,7 @@ export default function ({firstQuery, HistorySearch}){
           :  <ul>
                 {result && result.results.map(r => 
                         
-                        <li key={r.id}> <NavLink to={`${r.id}`}> {r.title}</NavLink> </li> 
+                        <li key={r.id}> <NavLink to={{pathname: `${r.id}`, state:{from: location},}}> {r.title}</NavLink> </li> 
                     )
                 }
             </ul>

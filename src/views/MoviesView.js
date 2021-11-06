@@ -26,14 +26,14 @@ export default function () {
            search: `query=${query}`});
     }
 
-    console.log(firstQuery);
+    console.log(location);
 
     return(
       <>  
 
         { movieid && movie
         ? <MovieDetailView movie = {movie} 
-                firstQuery= {firstQuery}
+                    location= {location}
         />
         : <SearchView firstQuery = {firstQuery}
                 HistorySearch = {HistorySearch}

@@ -1,18 +1,27 @@
 import React from "react";
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, NavLink, Switch, useHistory } from 'react-router-dom';
 import s from '../style/MovieDetailView.module.css';
 import CastView from './CastView';
 import ReviewsView from './ReviewsView';
-import SearchView from "./SearchView";
 
-export default function ({movie, firstQuery}) {
+export default function ({movie, location}) {
 
-    console.log(firstQuery);
+
+    const history = useHistory();
+    // const location = useLocation();
+
+    console.log(location);
+
+    function goBack(){
+      history.push(location.state.from)
+
+    }
 
     return(
       <div>
         <section className={s.general}>
-        <NavLink to={firstQuery && `movie/?query=${firstQuery}`} className={s.general__back}>Назад</NavLink>
+        {/* <NavLink to={firstQuery && `movie/?query=${firstQuery}`} className={s.general__back}>Назад</NavLink> */}
+        <button onClick={goBack}> Назад </button>
           <ul className={s.general__list}>
         <li className={s.genetal__item}>
           <img alt='Плакат фильма' src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} />
