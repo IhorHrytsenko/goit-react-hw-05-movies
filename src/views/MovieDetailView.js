@@ -49,7 +49,7 @@ export default function ({movie, location}) {
         <Switch> 
         <Route path="/movies/:movieId/cast">
             <section className={s.general}>
-            <Suspense>
+            <Suspense fallback={<h1>AAAAAaaaaaaa.....</h1>}>
               <CastView movieId={movie.id}/>
             </Suspense>  
             </section>         
@@ -57,7 +57,7 @@ export default function ({movie, location}) {
 
         <Route path="/movies/:movieId/reviews">
             <section className={s.general}>
-            <Suspense>
+            <Suspense fallback={<h1>AAAAAaaaaaaa.....</h1>}>
               <ReviewsView movieId={movie.id}/>
             </Suspense>
             </section>            
