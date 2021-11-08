@@ -9,16 +9,8 @@ export default function ({movie, location, firstQuery}) {
 
     const history = useHistory();
 
-    console.log("q ", firstQuery);
-    console.log("s ", location);
-
     function goBack(){
       history.push(location.state.from)
-
-
-    //   history.push({
-    //     ...location,
-    //    search: `query=${firstQuery}`});
     }
 
     return(
@@ -46,9 +38,9 @@ export default function ({movie, location, firstQuery}) {
         <p>Дополнительная информация</p>
         <ul>
         <li>
-        <NavLink to={{pathname: `/movies/${movie.id}/cast`, state:{from: location},}}  >Актеры</NavLink>
+        <NavLink to={{pathname: `/movies/${movie.id}/cast`, state:{from: location.state.from},}}  >Актеры</NavLink>
         </li> 
-        <li><NavLink to={{pathname: `/movies/${movie.id}/reviews`, state:{from: location},}}>Отзывы</NavLink></li> 
+        <li><NavLink to={{pathname: `/movies/${movie.id}/reviews`, state:{from: location.state.from},}}>Отзывы</NavLink></li> 
         </ul>
         </section>
 

@@ -12,9 +12,6 @@ export default function () {
     const [movie, setMovie] = useState(null);
     const location = useLocation();
     const history = useHistory()
-
-    const firstQuery = location.search.substring(7, location.search.length);
-
     
     useEffect(() => {
         api(movieid).then(data => setMovie(data))
@@ -33,9 +30,8 @@ export default function () {
         { movieid && movie
         ? <Suspense fallback={<h1>AAAAAaaaaaaa.....</h1>}> <MovieDetailView movie = {movie} 
                     location = {location}
-                    firstQuery = {firstQuery}
         /> </Suspense>
-        : <Suspense fallback={<h1>AAAAAaaaaaaa.....</h1>}> <SearchView firstQuery = {firstQuery}
+        : <Suspense fallback={<h1>AAAAAaaaaaaa.....</h1>}> <SearchView
                 HistorySearch = {HistorySearch}
         /></Suspense>
         }
