@@ -27,14 +27,13 @@ export default function () {
            search: `query=${query}`});
     }
 
-    console.log(location);
-
     return(
       <>  
 
         { movieid && movie
         ? <Suspense fallback={<h1>AAAAAaaaaaaa.....</h1>}> <MovieDetailView movie = {movie} 
-                    location= {location}
+                    location = {location}
+                    firstQuery = {firstQuery}
         /> </Suspense>
         : <Suspense fallback={<h1>AAAAAaaaaaaa.....</h1>}> <SearchView firstQuery = {firstQuery}
                 HistorySearch = {HistorySearch}
