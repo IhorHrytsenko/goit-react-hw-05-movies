@@ -10,7 +10,7 @@ export default function ({movie, location, firstQuery}) {
     const history = useHistory();
 
     function goBack(){
-      history.push(location.state.from)
+      history.push(location.state.from);
     }
 
     return(
